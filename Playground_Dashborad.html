@@ -884,14 +884,7 @@
             'no information': '#D5D8DE'
         };
         function getAgeGroupColor(ag) { return AGE_COLOR_MAP[(ag || '').toLowerCase()] || AGE_COLOR_MAP['no information']; }
-        function normalizePhoto(url, isThumb = false) {
-            if (!url || url === "photos/F_Cleaning" || url.endsWith('/')) return NO_PHOTO_PLACEHOLDER;
-            let targetUrl = url;
-            if (isThumb) {
-                targetUrl = targetUrl.replace('photos/', 'thumbs/');
-            }
-            return targetUrl;
-        }
+        function normalizePhoto(url) { if (!url || url === "photos/F_Cleaning" || url.endsWith('/')) return NO_PHOTO_PLACEHOLDER; return url; }
 
 
         let pieChart, lineChart, barChart, map, markersGroup;
@@ -1601,18 +1594,12 @@
 
             if (photos.length === 0 || !photos[0].url) {
                 mainImg.src = NO_PHOTO_PLACEHOLDER;
-                mainImg.removeAttribute('data-full');
                 note.textContent = 'No photos available';
                 renderCurrentPhotoFeaturePill(pg, null);
                 return;
             }
 
-
-            const fullUrl = normalizePhoto(photos[0].url, false);
-            const thumbUrl = normalizePhoto(photos[0].url, true);
-
-            mainImg.src = thumbUrl;
-            mainImg.dataset.full = fullUrl;
+            mainImg.src = normalizePhoto(photos[0].url);
             mainImg.onerror = () => { mainImg.onerror = null; mainImg.src = NO_PHOTO_PLACEHOLDER; };
 
             renderCurrentPhotoFeaturePill(pg, photos[0].feature);
@@ -1623,19 +1610,13 @@
                 thumb.dataset.feature = p.feature || '';
 
                 const img = document.createElement('img');
-                const pFullUrl = normalizePhoto(p.url, false);
-                const pThumbUrl = normalizePhoto(p.url, true);
-
-                img.src = pThumbUrl;
-                img.dataset.full = pFullUrl;
+                img.src = normalizePhoto(p.url);
                 img.onerror = () => { img.onerror = null; img.src = NO_PHOTO_PLACEHOLDER; };
                 img.title = p.feature || '';
                 thumb.appendChild(img);
 
                 thumb.addEventListener('click', () => {
-                    mainImg.src = pFullUrl;
-                    mainImg.dataset.full = pFullUrl;
-
+                    mainImg.src = normalizePhoto(p.url);
                     thumbBox.querySelectorAll('.photo-thumb').forEach(t => t.classList.remove('active'));
                     thumb.classList.add('active');
 
