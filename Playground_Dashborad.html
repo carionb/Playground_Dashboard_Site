@@ -1,0 +1,1751 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playground Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+    <script src="subzonesMap.js"></script>
+    <script src="dashboard_data_0731.js"></script>
+    <style>
+        :root {
+            --bg-main: #f8fafc;
+            --surface-card: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --primary: #3768F3;
+            --primary-hover: #2b5bd6;
+            --primary-light: #e9edfc;
+            --border-color: #e2e8f0;
+            --radius-md: 12px;
+            --radius-sm: 8px;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: var(--bg-main);
+            color: var(--text-main);
+            padding: 24px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .top-navbar {
+            background: var(--surface-card);
+            padding: 16px 24px;
+            border-radius: var(--radius-md);
+            margin-bottom: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: nowrap;
+        }
+
+        .filter-group label {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            flex-shrink: 0;
+        }
+
+        .filter-group select {
+            height: 38px;
+            padding: 0 14px;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-color);
+            background-color: #fff;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-main);
+            box-sizing: border-box;
+            display: inline-flex;
+            align-items: center;
+            cursor: pointer;
+            outline: none;
+            transition: all 0.2s ease;
+
+        }
+
+        .filter-group select:hover {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+        }
+
+        .age-dropdown,
+        .feature-dropdown {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            height: 38px;
+        }
+
+        .age-dropdown-btn,
+        .feature-dropdown-btn {
+            height: 38px;
+            padding: 0 14px;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-color);
+            background-color: #fff;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-main);
+            box-sizing: border-box;
+            display: inline-flex;
+            align-items: center;
+            cursor: pointer;
+            outline: none;
+            transition: all 0.2s ease;
+        }
+
+        .age-dropdown-btn:hover,
+        .feature-dropdown-btn:hover {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+        }
+
+        .age-dropdown-badge,
+        .feature-dropdown-badge {
+            background: var(--primary);
+            color: #fff;
+            font-size: 11px;
+            font-weight: 700;
+            border-radius: 10px;
+            padding: 1px 7px;
+        }
+
+        .age-dropdown-panel,
+        .feature-dropdown-panel {
+            display: none;
+            position: absolute;
+            top: calc(100% + 6px);
+            left: 0;
+            background: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            box-shadow: var(--shadow-md);
+            padding: 10px;
+            z-index: 1000;
+            min-width: 200px;
+            max-height: 280px;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        .age-dropdown-panel.open,
+        .feature-dropdown-panel.open {
+            display: block;
+        }
+
+        .age-dropdown-item,
+        .feature-dropdown-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 4px;
+            font-size: 10px;
+            font-weight: 500;
+            cursor: pointer;
+            border-radius: 6px;
+        }
+
+        .age-dropdown-item:hover,
+        .feature-dropdown-item:hover {
+            background: var(--bg-main);
+        }
+
+        .age-dropdown-item input,
+        .feature-dropdown-item input {
+            cursor: pointer;
+        }
+
+        .age-dropdown-swatch {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .age-dropdown-actions,
+        .feature-dropdown-actions {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 6px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .age-dropdown-actions button,
+        .feature-dropdown-actions button {
+            flex: 1;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 5px;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            background: #fff;
+            cursor: pointer;
+            color: var(--text-muted);
+            transition: all 0.2s;
+        }
+
+        .age-dropdown-actions button:hover,
+        .feature-dropdown-actions button:hover {
+            color: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .segmented-control {
+            display: flex;
+            background: #f1f5f9;
+            padding: 4px;
+            border-radius: var(--radius-sm);
+            gap: 2px;
+        }
+
+        .tab-btn {
+            padding: 8px 20px;
+            border-radius: 6px;
+            border: none;
+            background: transparent;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: var(--text-muted);
+        }
+
+        .tab-btn:hover {
+            color: var(--text-main);
+        }
+
+        .tab-btn.active {
+            background: var(--surface-card);
+            color: var(--primary);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .tab-panel {
+            display: none;
+        }
+
+        .tab-panel.active {
+            display: block;
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: 300px 340px 1fr;
+            gap: 20px;
+            align-items: stretch;
+        }
+
+        .summary-col {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            height: 100%;
+        }
+
+        .card {
+            background: var(--surface-card);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+            transition: box-shadow 0.25s ease, transform 0.25s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .card-header {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .summary-col>.card:last-child,
+        .details-col>.card:last-child {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            min-height: 250px;
+        }
+
+        .chart-card-compact {
+            justify-content: center;
+        }
+
+        .chart-card-compact>.chart-container {
+            flex: none;
+            width: 100%;
+            height: 300px;
+            max-height: 45vh;
+        }
+
+        .kpi-card {
+            background: linear-gradient(135deg, #ffffff 0%, var(--primary-light) 100%);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            border: 1px solid rgba(55, 104, 243, 0.15);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .kpi-value {
+            font-size: 38px;
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1;
+        }
+
+        .kpi-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-muted);
+            margin-top: 8px;
+        }
+
+        .top3-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .top3-item:last-child {
+            border-bottom: none;
+        }
+
+        .top3-left .feat-name {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .top3-left .feat-sub {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        .top3-badge {
+            background: var(--primary-light);
+            color: var(--primary);
+            font-size: 18px;
+            font-weight: 800;
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+
+        .chart-container {
+            width: 100%;
+            flex: 1;
+            min-height: 0;
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: 300px 300px 1fr;
+            gap: 20px;
+            align-items: stretch;
+        }
+
+        .details-grid>.card {
+            display: flex;
+            flex-direction: column;
+            min-height: 0;
+        }
+
+        .details-col {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            height: 100%;
+        }
+
+        .feature-btn-list {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            flex: 1;
+            min-height: 0;
+            overflow-y: auto;
+            padding-right: 4px;
+        }
+
+        .feature-btn {
+            text-align: left;
+            padding: 10px 14px;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-color);
+            background: #fff;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-main);
+            cursor: pointer;
+            transition: all 0.15s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .feature-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .feature-btn.active {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: #fff;
+        }
+
+        .selected-feature-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 4px;
+        }
+
+        .selected-feature-pill {
+            background: var(--bg-main);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            font-size: 12px;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 20px;
+            cursor: pointer;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .selected-feature-pill.active-pill {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .photo-wrapper {
+            width: 100%;
+            height: 260px;
+            background: var(--bg-main);
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px dashed var(--border-color);
+            margin-top: 4px;
+            cursor: zoom-in;
+            flex-shrink: 0;
+        }
+
+        .photo-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .photo-thumbs {
+            display: flex;
+            gap: 8px;
+            margin-top: 10px;
+            overflow-x: auto;
+            padding-bottom: 4px;
+        }
+
+        .photo-thumb {
+            width: 56px;
+            height: 56px;
+            border-radius: 6px;
+            overflow: hidden;
+            flex-shrink: 0;
+            cursor: pointer;
+            border: 2px solid transparent;
+            opacity: 0.7;
+            transition: all 0.15s ease;
+        }
+
+        .photo-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .photo-thumb:hover {
+            opacity: 1;
+        }
+
+        .photo-thumb.active {
+            border-color: var(--primary);
+            opacity: 1;
+        }
+
+        .photo-count-note {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 6px;
+        }
+
+        .info-pill-group {
+            display: flex;
+            gap: 8px;
+            margin-top: 14px;
+            flex-wrap: wrap;
+        }
+
+        .info-pill {
+            background: var(--bg-main);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .info-pill strong {
+            color: var(--text-main);
+            font-weight: 600;
+        }
+
+        #map {
+            width: 100%;
+            height: 660px;
+            border-radius: var(--radius-sm);
+        }
+
+        .map-legend {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(4px);
+            padding: 12px 14px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            font-size: 0.8rem;
+            line-height: 1.6;
+            border: 1px solid var(--border-color);
+        }
+
+        .legend-title {
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: var(--text-main);
+            font-size: 0.85rem;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 3px;
+        }
+
+        .legend-color {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .clear-filter-btn {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--primary);
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .clear-filter-btn:hover {
+            text-decoration: underline;
+        }
+
+        .age-group-pill {
+            background: #f1f5f9;
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 12px;
+            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .age-group-pill:hover {
+            border-color: var(--text-main);
+            color: var(--text-main);
+            background: #e2e8f0;
+        }
+
+        .age-group-pill.active-pill {
+            background: #ffffff;
+            color: var(--text-main);
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(55, 104, 243, 0.15);
+        }
+
+        .age-group-pill .swatch-dot {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .id-badge {
+            background: var(--primary-light);
+            color: var(--primary);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 20px;
+            white-space: nowrap;
+        }
+
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            justify-content: center;
+            align-items: center;
+            cursor: zoom-out;
+        }
+
+        #lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 8px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+        }
+
+        .bar-back-btn {
+            margin-left: auto;
+            font-size: 12px;
+            background: #f1f5f9;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 4px 14px;
+            cursor: pointer;
+            color: var(--primary);
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .bar-back-btn:hover {
+            background: #e2e8f0;
+        }
+
+        /* ========== For Mobile Devices ========== */
+        @media (max-width: 900px) {
+            .top-navbar {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .filter-group {
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+
+            .filter-group select,
+            .age-dropdown,
+            .feature-dropdown {
+                flex: 1;
+                min-width: 140px;
+            }
+
+            .segmented-control {
+                width: 100%;
+                justify-content: center;
+                margin-top: 10px;
+            }
+
+            .tab-btn {
+                flex: 1;
+                text-align: center;
+            }
+
+            .summary-grid,
+            .details-grid {
+                grid-template-columns: 1fr;
+            }
+
+            #map {
+                height: 450px;
+            }
+
+            .photo-wrapper {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="top-navbar">
+        <div class="filter-group">
+            <label>Town</label>
+            <select id="townSelect">
+                <option value="ALL">All Towns</option>
+            </select>
+            <label>Subzone</label>
+            <select id="subzoneSelect">
+                <option value="ALL">All Subzones</option>
+            </select>
+
+            <!-- Age Group (Summary) -->
+            <div id="ageFilterContainer">
+                <label>Age Group</label>
+                <div class="age-dropdown">
+                    <button class="age-dropdown-btn" id="ageDropdownBtn" type="button">
+                        <span id="ageDropdownLabel">All Age Groups</span>
+                        <span class="age-dropdown-badge" id="ageDropdownBadge" style="display:none;"></span>
+                    </button>
+                    <div class="age-dropdown-panel" id="ageDropdownPanel"></div>
+                </div>
+            </div>
+
+            <!-- Feature (Details) -->
+            <div id="featureFilterContainer" style="display:none;">
+                <label>Feature</label>
+                <div class="feature-dropdown">
+                    <button class="feature-dropdown-btn" id="featureDropdownBtn" type="button">
+                        <span id="featureDropdownLabel">All Features</span>
+                        <span class="feature-dropdown-badge" id="featureDropdownBadge" style="display:none;"></span>
+                    </button>
+                    <div class="feature-dropdown-panel" id="featureDropdownPanel"></div>
+                </div>
+            </div>
+        </div>
+        <div class="segmented-control">
+            <button class="tab-btn active" onclick="switchTab('summary')">Summary</button>
+            <button class="tab-btn" onclick="switchTab('details')">Details Map</button>
+        </div>
+    </div>
+
+    <!-- Summary -->
+    <div id="summary-panel" class="tab-panel active">
+        <div class="summary-grid">
+            <div class="summary-col">
+                <div class="kpi-card">
+                    <div class="kpi-value" id="kpi-playgrounds">0</div>
+                    <div class="kpi-title">Total Number of Playgrounds</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-value" id="kpi-features">0</div>
+                    <div class="kpi-title">Total Feature Types</div>
+                </div>
+                <div class="card chart-card-compact">
+                    <div class="card-header">
+                        <span>Playgrounds by Age Group</span>
+                        <button class="bar-back-btn" id="pieResetBtn" onclick="resetPieChart()"
+                            style="display:none;">Reset</button>
+                    </div>
+                    <div id="pie-chart" class="chart-container"></div>
+                </div>
+            </div>
+            <div class="summary-col">
+                <div class="card top3-box">
+                    <div class="card-header">Top 3 Features Included</div>
+                    <div class="top3-item">
+                        <div class="top3-left">
+                            <div class="feat-name" id="top1-name">-</div>
+                            <div class="feat-sub">Present in playgrounds</div>
+                        </div>
+                        <div class="top3-badge" id="top1-count">0</div>
+                    </div>
+                    <div class="top3-item">
+                        <div class="top3-left">
+                            <div class="feat-name" id="top2-name">-</div>
+                            <div class="feat-sub">Present in playgrounds</div>
+                        </div>
+                        <div class="top3-badge" id="top2-count">0</div>
+                    </div>
+                    <div class="top3-item">
+                        <div class="top3-left">
+                            <div class="feat-name" id="top3-name">-</div>
+                            <div class="feat-sub">Present in playgrounds</div>
+                        </div>
+                        <div class="top3-badge" id="top3-count">0</div>
+                    </div>
+                </div>
+                <div class="card chart-card-compact">
+                    <div class="card-header">Playgrounds by Completion Year</div>
+                    <div id="line-chart" class="chart-container"></div>
+                </div>
+            </div>
+            <div class="summary-col">
+                <div class="card">
+                    <div class="card-header"><span>Number of Playgrounds Featuring These Elements</span><button
+                            class="bar-back-btn" id="barBackBtn" onclick="exitOthersDrilldown()" style="display:none;">←
+                            Back</button></div>
+                    <div id="bar-chart" class="chart-container"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Details -->
+    <div id="details-panel" class="tab-panel">
+        <div class="details-grid">
+            <div class="card">
+                <div class="card-header"><span>Features at this Playground</span><button class="clear-filter-btn"
+                        id="clearFeatureBtn" style="display:none;" onclick="resetDetailsPanel()">Reset</button></div>
+                <div class="feature-btn-list" id="featureBtnList">
+                    <div style="padding:10px;text-align:center;color:#64748b;">Select a playground on map</div>
+                </div>
+            </div>
+            <div class="details-col">
+                <div class="card">
+                    <div class="card-header"><span>Area Age Groups</span>
+                        <div style="display:flex;gap:8px;"><button class="clear-filter-btn"
+                                onclick="selectAllDetailsAges(true)">All</button><button class="clear-filter-btn"
+                                onclick="selectAllDetailsAges(false)">Clear</button></div>
+                    </div>
+                    <div id="selected-age-groups" class="selected-feature-list"
+                        style="max-height:120px;overflow-y:auto;">Pan or zoom the map to see area age groups</div>
+                </div>
+                <div class="card">
+                    <div class="card-header"><span id="selected-title">Select a Marker on Map</span><span
+                            class="id-badge">ID: <strong id="selected-id">-</strong></span></div>
+                    <div class="photo-wrapper" id="photoWrapper" onclick="openLightbox()"><img id="selected-photo"
+                            src="" alt="Playground Photo"></div>
+                    <div class="photo-thumbs" id="photoThumbs"></div>
+                    <div class="photo-count-note" id="photoCountNote"></div>
+                    <div class="info-pill-group">
+                        <div class="info-pill">Town: <strong id="selected-town">-</strong></div>
+                        <div class="info-pill">Subzone: <strong id="selected-subzone">-</strong></div>
+                        <div class="info-pill">Age Group: <strong id="selected-age">-</strong></div>
+                        <div class="info-pill">Year: <strong id="selected-year">-</strong></div>
+                    </div>
+                    <div class="card-header" style="margin-top:16px;margin-bottom:4px;">Feature</div>
+                    <div class="selected-feature-list" id="selected-feature-list"></div>
+                </div>
+            </div>
+            <div class="card" style="padding:8px;position:relative;">
+                <div id="map"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()"><img id="lightbox-img" src="" alt="Zoomed Photo"></div>
+
+    <script>
+
+        const NO_PHOTO_PLACEHOLDER = 'data:image/svg+xml;utf8,' + encodeURIComponent(
+            '<svg xmlns="http://www.w3.org/2000/svg" width="500" height="350"><rect width="100%" height="100%" fill="#e2e8f0"/><text x="50%" y="50%" font-family="Inter, sans-serif" font-size="20" fill="#64748b" text-anchor="middle" dominant-baseline="middle">No Photo Available</text></svg>'
+        );
+        const AGE_COLOR_MAP = {
+            '2 to 5': '#F9A95C',
+            '2 to 6': '#F0D06A',
+            '3 to 12': '#7ED4DF',
+            '5 to 12': '#6DD09A',
+            '6 to 12': '#E5A0A0',
+            '2 to 12': '#3B82F6',
+            'no information': '#D5D8DE'
+        };
+        function getAgeGroupColor(ag) { return AGE_COLOR_MAP[(ag || '').toLowerCase()] || AGE_COLOR_MAP['no information']; }
+        function normalizePhoto(url) { if (!url || url === "photos/F_Cleaning" || url.endsWith('/')) return NO_PHOTO_PLACEHOLDER; return url; }
+
+
+        let pieChart, lineChart, barChart, map, markersGroup;
+        let selectedAgeGroups = new Set();
+        let detailsSelectedAgeGroups = new Set();
+        let selectedPlaygroundId = null;
+        let allAgeGroups = [];
+        let allFeatures = [];
+        let playgroundsById = {};
+        let legendControl = null;
+        let barOthersDrilldown = false;
+        let mapInitialized = false;
+        let activeFeatureFilter = null;
+        let selectedFeatures = new Set();
+        let featureFilterInitialized = false;
+
+        function buildPlaygroundsIndex() {
+            playgroundsById = {};
+            const ageSet = new Set();
+            const featSet = new Set();
+            rawData.forEach(row => {
+                const id = row.id;
+                if (!id) return;
+                if (!playgroundsById[id]) {
+                    playgroundsById[id] = {
+                        id, name: row.name || id, town: row.town || 'Unknown',
+                        subzone: row.subzone || 'Unknown', ageGroup: row.ageGroup || 'no information',
+                        year: row.year || 2021, lat: row.lat || 0, lng: row.lng || 0,
+                        features: [], photos: [], featurePhotoMap: {}
+                    };
+                }
+                const pg = playgroundsById[id];
+                if (row.features && Array.isArray(row.features)) {
+                    row.features.forEach(f => { if (!pg.features.includes(f)) pg.features.push(f); featSet.add(f); });
+                } else if (row.featurePhotos && typeof row.featurePhotos === 'object') {
+                    Object.keys(row.featurePhotos).forEach(f => { if (!pg.features.includes(f)) pg.features.push(f); featSet.add(f); });
+                }
+                if (row.featurePhotos) {
+                    Object.keys(row.featurePhotos).forEach(feature => {
+                        const url = row.featurePhotos[feature];
+                        if (url) { pg.featurePhotoMap[feature] = url; pg.photos.push({ feature, url }); }
+                    });
+                }
+                if (row.ageGroup) pg.ageGroup = row.ageGroup;
+                if (row.town) pg.town = row.town;
+                if (row.subzone) pg.subzone = row.subzone;
+                if (row.year) pg.year = row.year;
+                if (row.lat) pg.lat = row.lat;
+                if (row.lng) pg.lng = row.lng;
+                ageSet.add(pg.ageGroup);
+            });
+            allAgeGroups = Array.from(ageSet).sort();
+            allFeatures = Array.from(featSet).sort();
+            selectedAgeGroups = new Set(allAgeGroups);
+            detailsSelectedAgeGroups = new Set(allAgeGroups);
+            selectedFeatures = new Set(allFeatures);
+        }
+
+        function getFeatureListFromRow(item) {
+            if (item.features && Array.isArray(item.features)) return item.features;
+            if (item.featurePhotos && typeof item.featurePhotos === 'object') return Object.keys(item.featurePhotos);
+            return [];
+        }
+
+
+        function initTownDropdown() {
+            const townSelect = document.getElementById('townSelect');
+            townSelect.innerHTML = '<option value="ALL">All Towns</option>';
+            Object.keys(subzonesMap).sort().forEach(town => {
+                townSelect.innerHTML += `<option value="${town}">${town}</option>`;
+            });
+            updateSubzoneDropdown();
+        }
+        function updateSubzoneDropdown() {
+            const selectedTown = document.getElementById('townSelect').value;
+            const subzoneSelect = document.getElementById('subzoneSelect');
+            subzoneSelect.innerHTML = '<option value="ALL">All Subzones</option>';
+            if (selectedTown !== 'ALL' && subzonesMap[selectedTown]) {
+                subzonesMap[selectedTown].forEach(sub => {
+                    subzoneSelect.innerHTML += `<option value="${sub}">${sub}</option>`;
+                });
+            } else if (selectedTown === 'ALL') {
+                const allSubzones = new Set();
+                Object.values(subzonesMap).forEach(list => list.forEach(s => allSubzones.add(s)));
+                Array.from(allSubzones).sort().forEach(sub => {
+                    subzoneSelect.innerHTML += `<option value="${sub}">${sub}</option>`;
+                });
+            }
+        }
+
+        function initAgeGroupFilter() {
+            const panel = document.getElementById('ageDropdownPanel');
+            panel.innerHTML = '';
+            const actions = document.createElement('div');
+            actions.className = 'age-dropdown-actions';
+            actions.innerHTML = `<button type="button" id="ageSelectAll">Select all</button><button type="button" id="ageClearAll">Clear</button>`;
+            panel.appendChild(actions);
+
+            allAgeGroups.forEach(ag => {
+                const item = document.createElement('label');
+                item.className = 'age-dropdown-item';
+                item.innerHTML = `
+                    <input type="checkbox" checked data-age="${ag}">
+                    <span class="age-dropdown-swatch" style="background:${getAgeGroupColor(ag)};"></span>
+                    <span>${ag}</span>
+                `;
+                panel.appendChild(item);
+            });
+
+            panel.querySelectorAll('input[type=checkbox]').forEach(cb => {
+                cb.addEventListener('change', () => {
+                    const ag = cb.getAttribute('data-age');
+                    if (cb.checked) selectedAgeGroups.add(ag); else selectedAgeGroups.delete(ag);
+                    updateAgeDropdownLabel();
+                    applyFilters();
+                });
+            });
+            document.getElementById('ageSelectAll').addEventListener('click', () => {
+                selectedAgeGroups = new Set(allAgeGroups);
+                panel.querySelectorAll('input[type=checkbox]').forEach(cb => cb.checked = true);
+                updateAgeDropdownLabel();
+                applyFilters();
+            });
+            document.getElementById('ageClearAll').addEventListener('click', () => {
+                selectedAgeGroups = new Set();
+                panel.querySelectorAll('input[type=checkbox]').forEach(cb => cb.checked = false);
+                updateAgeDropdownLabel();
+                applyFilters();
+            });
+
+            document.getElementById('ageDropdownBtn').addEventListener('click', (e) => {
+                e.stopPropagation();
+                panel.classList.toggle('open');
+            });
+            document.addEventListener('click', (e) => {
+                if (!panel.contains(e.target) && e.target.id !== 'ageDropdownBtn') panel.classList.remove('open');
+            });
+            updateAgeDropdownLabel();
+        }
+        function updateAgeDropdownLabel() {
+            const label = document.getElementById('ageDropdownLabel');
+            const badge = document.getElementById('ageDropdownBadge');
+            if (selectedAgeGroups.size === allAgeGroups.length) {
+                label.textContent = 'All Age Groups';
+                badge.style.display = 'none';
+            } else if (selectedAgeGroups.size === 0) {
+                label.textContent = 'No Age Group';
+                badge.style.display = 'none';
+            } else {
+                label.textContent = 'Age Group';
+                badge.style.display = 'inline-block';
+                badge.textContent = selectedAgeGroups.size;
+            }
+        }
+
+        function initFeatureFilter() {
+            if (featureFilterInitialized) return;
+            const panel = document.getElementById('featureDropdownPanel');
+            panel.innerHTML = '';
+            const actions = document.createElement('div');
+            actions.className = 'feature-dropdown-actions';
+            actions.innerHTML = `<button type="button" id="featureSelectAll">Select all</button><button type="button" id="featureClearAll">Clear</button>`;
+            panel.appendChild(actions);
+
+            allFeatures.forEach(feat => {
+                const item = document.createElement('label');
+                item.className = 'feature-dropdown-item';
+                const checked = selectedFeatures.has(feat) ? 'checked' : '';
+                item.innerHTML = `
+                    <input type="checkbox" ${checked} data-feature="${feat}">
+                    <span>${feat}</span>
+                `;
+                panel.appendChild(item);
+            });
+
+            panel.querySelectorAll('input[type=checkbox]').forEach(cb => {
+                cb.addEventListener('change', () => {
+                    const feat = cb.getAttribute('data-feature');
+                    if (cb.checked) selectedFeatures.add(feat);
+                    else selectedFeatures.delete(feat);
+                    updateFeatureDropdownLabel();
+                    applyFilters();
+                });
+            });
+            document.getElementById('featureSelectAll').addEventListener('click', () => {
+                selectedFeatures = new Set(allFeatures);
+                panel.querySelectorAll('input[type=checkbox]').forEach(cb => cb.checked = true);
+                updateFeatureDropdownLabel();
+                applyFilters();
+            });
+            document.getElementById('featureClearAll').addEventListener('click', () => {
+                selectedFeatures = new Set();
+                panel.querySelectorAll('input[type=checkbox]').forEach(cb => cb.checked = false);
+                updateFeatureDropdownLabel();
+                applyFilters();
+            });
+
+            document.getElementById('featureDropdownBtn').addEventListener('click', (e) => {
+                e.stopPropagation();
+                panel.classList.toggle('open');
+            });
+            document.addEventListener('click', (e) => {
+                if (!panel.contains(e.target) && e.target.id !== 'featureDropdownBtn') panel.classList.remove('open');
+            });
+            updateFeatureDropdownLabel();
+            featureFilterInitialized = true;
+        }
+        function updateFeatureDropdownLabel() {
+            const label = document.getElementById('featureDropdownLabel');
+            const badge = document.getElementById('featureDropdownBadge');
+            if (selectedFeatures.size === allFeatures.length) {
+                label.textContent = 'All Features';
+                badge.style.display = 'none';
+            } else if (selectedFeatures.size === 0) {
+                label.textContent = 'No Feature';
+                badge.style.display = 'none';
+            } else {
+                label.textContent = 'Feature';
+                badge.style.display = 'inline-block';
+                badge.textContent = selectedFeatures.size;
+            }
+        }
+
+        function initCharts() {
+            pieChart = echarts.init(document.getElementById('pie-chart'), null, { renderer: 'svg' });
+            lineChart = echarts.init(document.getElementById('line-chart'), null, { renderer: 'svg' });
+            barChart = echarts.init(document.getElementById('bar-chart'), null, { renderer: 'svg' });
+        }
+
+        function initMap() {
+            map = L.map('map', { zoomControl: false, preferCanvas: true }).setView([1.3980, 103.8980], 13);
+            L.control.zoom({ position: 'topright' }).addTo(map);
+            L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+                attribution: '&copy; OpenStreetMap &copy; CARTO'
+            }).addTo(map);
+            markersGroup = L.layerGroup().addTo(map);
+            updateMapLegend();
+            map.on('moveend', updateDetailsAreaAges);
+        }
+
+        function updateMapLegend(visibleAges = allAgeGroups) {
+            if (legendControl) map.removeControl(legendControl);
+            const legend = L.control({ position: 'bottomright' });
+            legend.onAdd = function () {
+                const div = L.DomUtil.create('div', 'map-legend');
+                div.innerHTML = '<div class="legend-title">Age Group Legend</div>';
+                const agesToShow = visibleAges.length > 0 ? visibleAges : allAgeGroups;
+                agesToShow.forEach(ag => {
+                    div.innerHTML += `<div class="legend-item"><span class="legend-color" style="background:${getAgeGroupColor(ag)};"></span><span>${ag}</span></div>`;
+                });
+                return div;
+            };
+            legend.addTo(map);
+            legendControl = legend;
+        }
+
+        function updateDetailsAreaAges() {
+            if (!map) return;
+            const bounds = map.getBounds();
+            const visiblePlaygrounds = getFilteredPlaygrounds().filter(pg => {
+                if (!pg.lat || !pg.lng) return false;
+                return bounds.contains([pg.lat, pg.lng]);
+            });
+            const presentAgesInView = [...new Set(visiblePlaygrounds.map(pg => pg.ageGroup))].sort();
+            const container = document.getElementById('selected-age-groups');
+            container.innerHTML = '';
+            if (presentAgesInView.length === 0) {
+                container.innerHTML = '<span style="font-size:12px;color:var(--text-muted);padding:4px;">No playgrounds in view</span>';
+                updateMapLegend([]);
+                return;
+            }
+            presentAgesInView.forEach(ag => {
+                const pill = document.createElement('span');
+                pill.className = 'age-group-pill' + (detailsSelectedAgeGroups.has(ag) ? ' active-pill' : '');
+                pill.innerHTML = `<span class="swatch-dot" style="background:${getAgeGroupColor(ag)};"></span>${ag}`;
+                pill.addEventListener('click', () => {
+                    if (detailsSelectedAgeGroups.has(ag)) detailsSelectedAgeGroups.delete(ag);
+                    else detailsSelectedAgeGroups.add(ag);
+                    updateDetailsAreaAges();
+                    renderMap(getFilteredPlaygrounds());
+                });
+                container.appendChild(pill);
+            });
+            updateMapLegend(presentAgesInView);
+        }
+
+        function selectAllDetailsAges(select) {
+            if (!map) return;
+            const bounds = map.getBounds();
+            const visiblePlaygrounds = getFilteredPlaygrounds().filter(pg => pg.lat && pg.lng && bounds.contains([pg.lat, pg.lng]));
+            const presentAgesInView = [...new Set(visiblePlaygrounds.map(pg => pg.ageGroup))];
+            if (select) presentAgesInView.forEach(ag => detailsSelectedAgeGroups.add(ag));
+            else presentAgesInView.forEach(ag => detailsSelectedAgeGroups.delete(ag));
+            updateDetailsAreaAges();
+            renderMap(getFilteredPlaygrounds());
+        }
+
+
+        function getFilteredRows() {
+            const townVal = document.getElementById('townSelect').value;
+            const subzoneVal = document.getElementById('subzoneSelect').value;
+            return rawData.filter(item => {
+                const matchTown = (townVal === 'ALL' || item.town === townVal);
+                const matchSubzone = (subzoneVal === 'ALL' || item.subzone === subzoneVal);
+                const matchAge = selectedAgeGroups.has(item.ageGroup || 'No information');
+                return matchTown && matchSubzone && matchAge;
+            });
+        }
+
+        function getFilteredPlaygrounds() {
+            const townVal = document.getElementById('townSelect').value;
+            const subzoneVal = document.getElementById('subzoneSelect').value;
+            return Object.values(playgroundsById).filter(pg => {
+                const matchTown = (townVal === 'ALL' || pg.town === townVal);
+                const matchSubzone = (subzoneVal === 'ALL' || pg.subzone === subzoneVal);
+                const matchAge = selectedAgeGroups.has(pg.ageGroup);
+                const matchFeature = selectedFeatures.size === 0 || pg.features.some(f => selectedFeatures.has(f));
+                return matchTown && matchSubzone && matchAge && matchFeature;
+            });
+        }
+
+
+        function countUniquePlaygroundsPerFeature(rows) {
+            const counts = {};
+            rows.forEach(item => {
+                getFeatureListFromRow(item).forEach(f => { counts[f] = (counts[f] || 0) + 1; });
+            });
+            return counts;
+        }
+
+        function renderKPIs(rows) {
+            const uniquePlaygrounds = new Set(rows.map(d => d.id));
+            document.getElementById('kpi-playgrounds').innerText = uniquePlaygrounds.size;
+            const allFeatSet = new Set();
+            rows.forEach(d => getFeatureListFromRow(d).forEach(f => allFeatSet.add(f)));
+            document.getElementById('kpi-features').innerText = allFeatSet.size;
+        }
+
+        function renderTop3(rows) {
+            const counts = countUniquePlaygroundsPerFeature(rows);
+            const sorted = Object.entries(counts).sort((a, b) => {
+                if (b[1] !== a[1]) return b[1] - a[1];
+                return a[0].localeCompare(b[0]);
+            });
+            for (let i = 0; i < 3; i++) {
+                document.getElementById(`top${i + 1}-name`).innerText = sorted[i] ? sorted[i][0] : '-';
+                document.getElementById(`top${i + 1}-count`).innerText = sorted[i] ? sorted[i][1] : 0;
+            }
+        }
+
+        function renderPieChart(rows) {
+            const seenIds = new Set();
+            const counts = {};
+            rows.forEach(d => {
+                if (seenIds.has(d.id)) return;
+                seenIds.add(d.id);
+                const ag = d.ageGroup || 'No information';
+                counts[ag] = (counts[ag] || 0) + 1;
+            });
+            const pieData = Object.keys(counts).map(key => ({
+                name: key,
+                value: counts[key],
+                itemStyle: { color: getAgeGroupColor(key) }
+            }));
+            pieChart.setOption({
+                tooltip: { trigger: 'item' },
+                series: [{
+                    type: 'pie',
+                    radius: ['30%', '45%'],
+                    center: ['50%', '52%'],
+                    avoidLabelOverlap: true,
+                    itemStyle: { borderColor: '#fff', borderWidth: 2 },
+                    label: {
+                        show: true,
+                        formatter: function (params) { return params.name + '\n' + params.percent.toFixed(1) + '%'; },
+                        fontSize: 10,
+                        fontWeight: 600,
+                        color: '#475569',
+                        lineHeight: 15,
+                        overflow: 'none',
+                        width: null
+                    },
+                    labelLine: { length: 8, length2: 10 },
+                    data: pieData
+                }]
+            });
+        }
+
+        function renderLineChart(rows) {
+            const seenPerYear = new Set();
+            const yearCountsMap = {};
+            rows.forEach(d => {
+                const key = d.id + '||' + d.year;
+                if (seenPerYear.has(key)) return;
+                seenPerYear.add(key);
+                yearCountsMap[d.year] = (yearCountsMap[d.year] || 0) + 1;
+            });
+            const years = Object.keys(yearCountsMap).sort((a, b) => a - b);
+            const yearCounts = years.map(yr => yearCountsMap[yr]);
+            lineChart.setOption({
+                tooltip: { trigger: 'axis' },
+                grid: { top: 15, bottom: 25, left: 35, right: 15 },
+                xAxis: { type: 'category', data: years },
+                yAxis: { type: 'value', minInterval: 1 },
+                series: [{
+                    type: 'line',
+                    data: yearCounts,
+                    smooth: true,
+                    lineStyle: { color: '#3768F3', width: 3 },
+                    itemStyle: { color: '#3768F3' },
+                    areaStyle: {
+                        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                            { offset: 0, color: 'rgba(55,104,243,0.3)' },
+                            { offset: 1, color: 'rgba(55,104,243,0.0)' }
+                        ])
+                    }
+                }]
+            });
+        }
+
+        function getBarChartCounts(rows) {
+            const counts = {};
+            rows.forEach(item => {
+                const feats = getFeatureListFromRow(item);
+                feats.forEach(f => {
+                    if (!f) return;
+                    if (barOthersDrilldown) {
+                        if (f.startsWith('Others')) counts[f] = (counts[f] || 0) + 1;
+                    } else {
+                        const key = f.startsWith('Others') ? 'Others' : f;
+                        counts[key] = (counts[key] || 0) + 1;
+                    }
+                });
+            });
+            return counts;
+        }
+
+        function renderBarChart(rows) {
+            const counts = getBarChartCounts(rows);
+            const sorted = Object.entries(counts).sort((a, b) => {
+                if (a[1] !== b[1]) return a[1] - b[1];
+                return b[0].localeCompare(a[0]);
+            });
+            const hasOthers = !barOthersDrilldown && sorted.some(([key]) => key === 'Others');
+
+            barChart.setOption({
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: { type: 'shadow' },
+                    formatter: function (params) {
+                        const p = params[0];
+                        let text = `${p.name}: ${p.value}`;
+                        if (p.name === 'Others' && !barOthersDrilldown) {
+                            text += '<br/><span style="color:#94a3b8;font-size:11px;">Double-click for breakdown</span>';
+                        }
+                        return text;
+                    }
+                },
+                grid: { left: '28%', right: '10%', top: '2%', bottom: '5%' },
+                xAxis: { type: 'value', minInterval: 1 },
+                yAxis: { type: 'category', data: sorted.map(d => d[0]), axisTick: { show: false } },
+                series: [{
+                    type: 'bar',
+                    data: sorted.map(d => d[1]),
+                    itemStyle: {
+                        color: function (params) {
+                            if (params.name === 'Others' && !barOthersDrilldown) return '#3768F3';
+                            return '#3768F3';
+                        },
+                        opacity: function (params) {
+                            if (params.name === 'Others' && !barOthersDrilldown) return 0.6;
+                            return 1;
+                        },
+                        borderRadius: [0, 6, 6, 0]
+                    },
+                    label: { show: true, position: 'right', color: '#64748b', fontWeight: 600 }
+                }]
+            });
+
+            barChart.off('click');
+            barChart.off('dblclick');
+
+            barChart.on('click', function (params) {
+                const featureName = params.name;
+                if (!featureName) return;
+                const rows = getFilteredRows();
+                const ageCounts = {};
+                const seen = new Set();
+                rows.forEach(d => {
+                    const feats = getFeatureListFromRow(d);
+                    let hasFeature = false;
+                    if (featureName === 'Others') {
+                        hasFeature = feats.some(f => f.startsWith('Others'));
+                    } else {
+                        hasFeature = feats.includes(featureName);
+                    }
+                    if (hasFeature) {
+                        const key = d.id + '||' + d.ageGroup;
+                        if (!seen.has(key)) {
+                            seen.add(key);
+                            const ag = d.ageGroup || 'No information';
+                            ageCounts[ag] = (ageCounts[ag] || 0) + 1;
+                        }
+                    }
+                });
+                const pieData = Object.keys(ageCounts).map(ag => ({
+                    name: ag,
+                    value: ageCounts[ag],
+                    itemStyle: { color: getAgeGroupColor(ag) }
+                }));
+                pieChart.setOption({ series: [{ data: pieData }] });
+                document.getElementById('pieResetBtn').style.display = 'inline-block';
+            });
+
+            if (hasOthers) {
+                barChart.on('dblclick', function (params) {
+                    if (params.name === 'Others' && !barOthersDrilldown) {
+                        barOthersDrilldown = true;
+                        document.getElementById('barBackBtn').style.display = 'inline-block';
+                        renderBarChart(getFilteredRows());
+                    }
+                });
+            } else if (barOthersDrilldown) {
+                document.getElementById('barBackBtn').style.display = 'inline-block';
+            }
+        }
+
+        function exitOthersDrilldown() {
+            barOthersDrilldown = false;
+            document.getElementById('barBackBtn').style.display = 'none';
+            renderBarChart(getFilteredRows());
+        }
+
+        function resetPieChart() {
+            document.getElementById('pieResetBtn').style.display = 'none';
+            renderPieChart(getFilteredRows());
+        }
+
+        function renderMap(playgrounds) {
+            markersGroup.clearLayers();
+            const bounds = [];
+
+            playgrounds.forEach(pg => {
+                if (pg.lat && pg.lng) {
+                    if (!detailsSelectedAgeGroups.has(pg.ageGroup)) return;
+                    const isSelected = (pg.id == selectedPlaygroundId);
+                    const markerColor = getAgeGroupColor(pg.ageGroup);
+
+                    const marker = L.circleMarker([pg.lat, pg.lng], {
+                        radius: isSelected ? 11 : 7.5,
+                        fillColor: markerColor,
+                        color: '#ffffff',
+                        weight: isSelected ? 4 : 1.5,
+                        opacity: 1,
+                        fillOpacity: isSelected ? 1 : 0.85
+                    });
+                    marker.pgId = pg.id;
+                    marker.on('click', () => selectPlayground(pg.id));
+                    markersGroup.addLayer(marker);
+                    bounds.push([pg.lat, pg.lng]);
+                }
+            });
+
+            if (!mapInitialized && bounds.length > 0) {
+                map.fitBounds(bounds, { padding: [50, 50] });
+                mapInitialized = true;
+            }
+        }
+
+        function updateMarkerHighlight(id) {
+            if (!markersGroup) return;
+            markersGroup.eachLayer(marker => {
+                const isSelected = (marker.pgId == id);
+                marker.setRadius(isSelected ? 11 : 7.5);
+                marker.setStyle({
+                    weight: isSelected ? 4 : 1.5,
+                    fillOpacity: isSelected ? 1 : 0.85
+                });
+                if (isSelected) marker.bringToFront();
+            });
+        }
+
+        const styleSheet = document.createElement("style");
+        styleSheet.type = "text/css";
+        document.head.appendChild(styleSheet);
+
+        function selectPlayground(id) {
+            const pg = playgroundsById[id];
+            if (!pg) return;
+            selectedPlaygroundId = id;
+
+            document.getElementById('selected-title').innerText = pg.name || '-';
+            document.getElementById('selected-id').innerText = pg.id || '-';
+            document.getElementById('selected-town').innerText = pg.town || '-';
+            document.getElementById('selected-subzone').innerText = pg.subzone || '-';
+            document.getElementById('selected-age').innerText = pg.ageGroup || '-';
+            document.getElementById('selected-year').innerText = pg.year || '-';
+
+            const leftList = document.getElementById('featureBtnList');
+            leftList.innerHTML = '';
+            if (pg.features && pg.features.length > 0) {
+                [...new Set(pg.features)].forEach(f => {
+                    const btn = document.createElement('button');
+                    btn.className = 'feature-btn';
+                    btn.textContent = f;
+                    btn.addEventListener('click', () => switchPhotoByFeature(pg, f));
+                    leftList.appendChild(btn);
+                });
+            } else {
+                leftList.innerHTML = '<div style="padding:10px;text-align:center;color:#64748b;">No features</div>';
+            }
+            document.getElementById('clearFeatureBtn').style.display = 'inline-block';
+
+            renderPhotoGallery(pg);
+
+            const firstPhoto = pg.photos && pg.photos.length > 0 ? pg.photos[0] : null;
+            const defaultFeature = firstPhoto ? firstPhoto.feature : null;
+            activeFeatureFilter = defaultFeature || null;
+
+            updateFeatureHighlights(pg, activeFeatureFilter);
+            updateMarkerHighlight(id);
+            updateMarkerHighlight(selectedPlaygroundId);
+            if (pg.lat && pg.lng) {
+                map.flyTo([pg.lat, pg.lng], Math.max(map.getZoom(), 16), { duration: 0.8 });
+            }
+        }
+
+        function focusMapOnFilteredArea(playgrounds) {
+            if (!map) return;
+            const pts = playgrounds.filter(p => p.lat && p.lng).map(p => [p.lat, p.lng]);
+            if (pts.length === 0) return;
+            map.fitBounds(pts, { padding: [50, 50], maxZoom: 16 });
+        }
+
+        function updateFeatureHighlights(pg, currentFeature) {
+            const leftList = document.getElementById('featureBtnList');
+            leftList.querySelectorAll('.feature-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.textContent === currentFeature);
+            });
+        }
+
+
+        function renderCurrentPhotoFeaturePill(pg, featureText) {
+            const featureListBox = document.getElementById('selected-feature-list');
+            featureListBox.innerHTML = '';
+
+            if (!featureText || featureText === 'General' || featureText === '-') {
+                featureListBox.innerHTML = '<span style="color:#64748b;font-size:12px;">No specific feature</span>';
+                return;
+            }
+
+            const pill = document.createElement('span');
+            pill.className = 'selected-feature-pill active-pill';
+            pill.textContent = featureText;
+            pill.dataset.feature = featureText;
+            pill.addEventListener('click', (e) => {
+                e.stopPropagation();
+                switchPhotoByFeature(pg, featureText);
+            });
+            featureListBox.appendChild(pill);
+        }
+
+        function switchPhotoByFeature(pg, feature) {
+            activeFeatureFilter = (activeFeatureFilter === feature) ? null : feature;
+
+            updateFeatureHighlights(pg, activeFeatureFilter);
+
+            const mainImg = document.getElementById('selected-photo');
+            const thumbBox = document.getElementById('photoThumbs');
+
+            if (pg.featurePhotoMap && pg.featurePhotoMap[feature] && activeFeatureFilter) {
+                mainImg.src = normalizePhoto(pg.featurePhotoMap[feature]);
+            }
+
+            let matchedPhotoFeature = feature;
+            thumbBox.querySelectorAll('.photo-thumb').forEach(thumb => {
+                if (thumb.dataset.feature === activeFeatureFilter) {
+                    thumb.classList.add('active');
+                    thumb.scrollIntoView({ behavior: 'smooth', inline: 'nearest', block: 'nearest' });
+                } else {
+                    thumb.classList.remove('active');
+                }
+            });
+
+            renderCurrentPhotoFeaturePill(pg, activeFeatureFilter);
+            updateMarkerHighlight(pg.id);
+        }
+
+        function clearFeaturePanel() {
+            activeFeatureFilter = null;
+            if (selectedPlaygroundId) {
+                const pg = playgroundsById[selectedPlaygroundId];
+                updateFeatureHighlights(pg, null);
+                renderPhotoGallery(pg);
+            }
+            document.getElementById('clearFeatureBtn').style.display = 'none';
+            updateMarkerHighlight(null);
+        }
+
+        function renderPhotoGallery(pg) {
+            const mainImg = document.getElementById('selected-photo');
+            const thumbBox = document.getElementById('photoThumbs');
+            const note = document.getElementById('photoCountNote');
+            thumbBox.innerHTML = '';
+
+            const photos = (pg.photos && pg.photos.length > 0) ? pg.photos : [];
+
+            if (photos.length === 0 || !photos[0].url) {
+                mainImg.src = NO_PHOTO_PLACEHOLDER;
+                note.textContent = 'No photos available';
+                renderCurrentPhotoFeaturePill(pg, null);
+                return;
+            }
+
+            mainImg.src = normalizePhoto(photos[0].url);
+            mainImg.onerror = () => { mainImg.onerror = null; mainImg.src = NO_PHOTO_PLACEHOLDER; };
+
+            renderCurrentPhotoFeaturePill(pg, photos[0].feature);
+
+            photos.forEach((p, idx) => {
+                const thumb = document.createElement('div');
+                thumb.className = 'photo-thumb' + (idx === 0 ? ' active' : '');
+                thumb.dataset.feature = p.feature || '';
+
+                const img = document.createElement('img');
+                img.src = normalizePhoto(p.url);
+                img.onerror = () => { img.onerror = null; img.src = NO_PHOTO_PLACEHOLDER; };
+                img.title = p.feature || '';
+                thumb.appendChild(img);
+
+                thumb.addEventListener('click', () => {
+                    mainImg.src = normalizePhoto(p.url);
+                    thumbBox.querySelectorAll('.photo-thumb').forEach(t => t.classList.remove('active'));
+                    thumb.classList.add('active');
+
+                    renderCurrentPhotoFeaturePill(pg, p.feature);
+                    updateFeatureHighlights(pg, p.feature);
+                });
+                thumbBox.appendChild(thumb);
+            });
+
+            note.textContent = photos.length > 1 ? `${photos.length} photos available` : '1 photo available';
+        }
+
+        function resetDetailsPanel() {
+            activeFeatureFilter = null;
+            selectedPlaygroundId = null;
+            document.getElementById('featureBtnList').innerHTML = '<div style="padding:10px;text-align:center;color:#64748b;">Select a playground on map</div>';
+            document.getElementById('clearFeatureBtn').style.display = 'none';
+            document.getElementById('selected-title').innerText = 'Select a Marker on Map';
+            document.getElementById('selected-id').innerText = '-';
+            document.getElementById('selected-town').innerText = '-';
+            document.getElementById('selected-subzone').innerText = '-';
+            document.getElementById('selected-age').innerText = '-';
+            document.getElementById('selected-year').innerText = '-';
+            document.getElementById('selected-photo').src = NO_PHOTO_PLACEHOLDER;
+            document.getElementById('photoThumbs').innerHTML = '';
+            document.getElementById('photoCountNote').textContent = '';
+            document.getElementById('selected-feature-list').innerHTML = '';
+            document.querySelectorAll('.feature-btn').forEach(b => b.classList.remove('active'));
+            updateMarkerHighlight(null);
+            focusMapOnFilteredArea(getFilteredPlaygrounds());
+        }
+
+        function openLightbox() {
+            const src = document.getElementById('selected-photo').src;
+            if (!src || src.includes('data:image/svg+xml')) return;
+            document.getElementById('lightbox-img').src = src;
+            document.getElementById('lightbox').style.display = 'flex';
+        }
+        function closeLightbox() { document.getElementById('lightbox').style.display = 'none'; }
+
+
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-panel').forEach(panel => panel.classList.remove('active'));
+
+            if (tabName === 'summary') {
+                document.querySelectorAll('.tab-btn')[0].classList.add('active');
+                document.getElementById('summary-panel').classList.add('active');
+                document.getElementById('ageFilterContainer').style.display = 'block';
+                document.getElementById('featureFilterContainer').style.display = 'none';
+                setTimeout(() => { pieChart.resize(); lineChart.resize(); barChart.resize(); }, 50);
+            } else {
+                document.querySelectorAll('.tab-btn')[1].classList.add('active');
+                document.getElementById('details-panel').classList.add('active');
+                document.getElementById('ageFilterContainer').style.display = 'none';
+                document.getElementById('featureFilterContainer').style.display = 'block';
+                if (!featureFilterInitialized) {
+                    initFeatureFilter();
+                }
+                setTimeout(() => {
+                    map.invalidateSize();
+                    const playgrounds = getFilteredPlaygrounds();
+                    const bounds = playgrounds.filter(p => p.lat && p.lng).map(p => [p.lat, p.lng]);
+                    if (bounds.length > 0) map.fitBounds(bounds, { padding: [50, 50] });
+                }, 50);
+            }
+        }
+
+        function applyFilters() {
+            document.getElementById('pieResetBtn').style.display = 'none';
+            const rows = getFilteredRows();
+            renderKPIs(rows);
+            renderTop3(rows);
+            renderPieChart(rows);
+            renderLineChart(rows);
+            renderBarChart(rows);
+
+            const playgrounds = getFilteredPlaygrounds();
+            renderMap(playgrounds);
+
+            if (selectedPlaygroundId) {
+                const stillIn = playgrounds.some(p => p.id === selectedPlaygroundId);
+                if (!stillIn) resetDetailsPanel();
+            }
+        }
+
+        window.onload = function () {
+            if (typeof rawData === 'undefined' || rawData.length === 0) {
+                alert('Please ensure dashboard_data.js is in the same directory as this file.');
+                return;
+            }
+            buildPlaygroundsIndex();
+            initTownDropdown();
+            initAgeGroupFilter();
+            initCharts();
+            initMap();
+            applyFilters();
+            document.getElementById('featureBtnList').innerHTML = '<div style="padding:10px;text-align:center;color:#64748b;">Select a playground on map</div>';
+            requestAnimationFrame(() => {
+                if (pieChart) pieChart.resize();
+                if (lineChart) lineChart.resize();
+                if (barChart) barChart.resize();
+            });
+        };
+
+        window.switchTab = switchTab;
+        window.resetDetailsPanel = resetDetailsPanel;
+        window.selectAllDetailsAges = selectAllDetailsAges;
+        window.exitOthersDrilldown = exitOthersDrilldown;
+        window.openLightbox = openLightbox;
+        window.closeLightbox = closeLightbox;
+        window.resetPieChart = resetPieChart;
+
+        document.getElementById('townSelect').addEventListener('change', () => {
+            updateSubzoneDropdown();
+            applyFilters();
+            focusMapOnFilteredArea(getFilteredPlaygrounds());
+        });
+        document.getElementById('subzoneSelect').addEventListener('change', () => {
+            applyFilters();
+            focusMapOnFilteredArea(getFilteredPlaygrounds());
+        });
+
+        window.addEventListener('resize', () => {
+            if (pieChart) pieChart.resize();
+            if (lineChart) lineChart.resize();
+            if (barChart) barChart.resize();
+        });
+    </script>
+</body>
+
+</html>
