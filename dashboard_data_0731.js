@@ -5170,12 +5170,12 @@ const rawData = [
     "lng": 103.9002,
     "features": ["Climber", "Learnwall", "Obstacle", "Seat", "Shade", "Slide"],
     "featurePhotos": {
-      "Climber": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Towncentre_Group 1/IMG_7335.jpeg",
-      "Learnwall": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Towncentre_Group 1/IMG_7336.jpeg",
-      "Obstacle": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Towncentre_Group 1/IMG_7334.jpeg",
-      "Seat": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Towncentre_Group 1/IMG_7330.jpeg",
-      "Shade": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Towncentre_Group 1/IMG_7333.jpeg",
-      "Slide": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Towncentre_Group 1/IMG_7331.jpeg"
+      "Climber": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Towncentre_Group 1/IMG_7336.jpeg",
+      "Learnwall": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Towncentre_Group 1/IMG_7334.jpeg",
+      "Obstacle": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Towncentre_Group 1/IMG_7332.jpeg",
+      "Seat": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Towncentre_Group 1/IMG_7331.jpeg",
+      "Shade": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Towncentre_Group 1/IMG_7335.jpeg",
+      "Slide": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Towncentre_Group 1/IMG_7333.jpeg"
     }
   },
   {
