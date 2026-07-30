@@ -881,7 +881,7 @@
             '5 to 12': '#6DD09A',
             '6 to 12': '#E5A0A0',
             '2 to 12': '#3B82F6',
-            'no information': '#D5D8DE'
+            'no info': '#D5D8DE'
         };
         function getAgeGroupColor(ag) { return AGE_COLOR_MAP[(ag || '').toLowerCase()] || AGE_COLOR_MAP['no information']; }
         function normalizePhoto(url) { if (!url || url === "photos/F_Cleaning" || url.endsWith('/')) return NO_PHOTO_PLACEHOLDER; return url; }
