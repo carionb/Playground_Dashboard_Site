@@ -4125,17 +4125,12 @@ const rawData = [
     "year": 2021,
     "lat": 1.3851,
     "lng": 103.904,
-    "features": ["Climber", "Learnwall", "Obstacle", "Pole", "Rocker", "Ropenet", "Seat", "Shade", "Slide", "Spinner"],
+    "features": ["Climber", "Learnwall", "Obstacle", "Pole", "Spinner"],
     "featurePhotos": {
       "Climber": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/2025_04_0410_40_385693285991198414648.jpg",
       "Learnwall": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/2025_04_0410_39_2867896962564738358.jpg",
       "Obstacle": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/2025_04_0410_41_547513719669892123316.jpg",
       "Pole": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/17437347017205166542118361783158.jpg",
-      "Rocker": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/xx84xakf.jpg",
-      "Ropenet": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/eigqvw64.jpg",
-      "Seat": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/fg1ttf3r.jpg",
-      "Shade": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/m7p1yjwa.jpg",
-      "Slide": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/tl7zywa6.jpg",
       "Spinner": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/17437346212793538084449680621016.jpg"
     }
   },
@@ -4311,13 +4306,11 @@ const rawData = [
     "year": 2021,
     "lat": 1.3866,
     "lng": 103.906,
-    "features": ["Climber", "Imagiplay", "Learnwall", "Pavilion", "Rocker", "Slide"],
+    "features": ["Imagiplay", "Learnwall", "Pavilion", "Slide"],
     "featurePhotos": {
-      "Climber": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/373h1oe3.jpg",
       "Imagiplay": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/2025_04_0411_05_051570253260283507124.jpg",
       "Learnwall": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/2025_04_0411_06_331435676437947281882.jpg",
       "Pavilion": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/17437360042706893240361142686354.jpg",
-      "Rocker": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/p0amhp6n.jpg",
       "Slide": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/2025_04_0411_06_014017650767645122836.jpg"
     }
   },
@@ -4353,17 +4346,13 @@ const rawData = [
     "year": 2021,
     "lat": 1.3861,
     "lng": 103.9053,
-    "features": ["Climber", "Fitness", "Learnwall", "Others - Hardcourt", "Pavilion", "Rocker", "Seat", "Shade", "Slide"],
+    "features": ["Fitness", "Pavilion", "Rocker", "Seat", "Shade"],
     "featurePhotos": {
-      "Climber": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/iam91m3u.jpg",
       "Fitness": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/17437353920943226008863646335075.jpg",
-      "Learnwall": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/eeg1keoh.jpg",
-      "Others - Hardcourt": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/wv9s5sxv.jpg",
       "Pavilion": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/17437353096457677582578248028969.jpg",
       "Rocker": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/2025_04_0410_56_432057540355370979807.jpg",
       "Seat": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/2025_04_0410_53_474022197104763853013.jpg",
-      "Shade": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/2025_04_0410_55_357956385156506782650.jpg",
-      "Slide": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/4h6qlo26.jpg"
+      "Shade": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/2025_04_0410_55_357956385156506782650.jpg"
     }
   },
   {
@@ -4375,16 +4364,11 @@ const rawData = [
     "year": 2021,
     "lat": 1.387,
     "lng": 103.9123,
-    "features": ["Climber", "Imagiplay", "Learnwall", "Obstacle", "Pavilion", "Rocker", "Seesaw", "Shade", "Slide"],
+    "features": ["Climber", "Learnwall", "Obstacle", "Slide"],
     "featurePhotos": {
       "Climber": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/2025_04_0411_45_194129968417794504497.jpg",
-      "Imagiplay": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/byg0ebzc.jpg",
       "Learnwall": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/17437384122518958720664534868445.jpg",
       "Obstacle": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/2025_04_0411_46_28196393260032240835.jpg",
-      "Pavilion": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/jk862osv.jpg",
-      "Rocker": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/pb5ahzjm.jpg",
-      "Seesaw": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/lb25c52y.jpg",
-      "Shade": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/w1flln9f.jpg",
       "Slide": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/2025_04_0411_46_074182085239442173891.jpg"
     }
   },
@@ -4397,17 +4381,11 @@ const rawData = [
     "year": 2021,
     "lat": 1.387,
     "lng": 103.9115,
-    "features": ["Climber", "Fitness", "Obstacle", "Others - Infoboard", "Others - Shelter", "Pavilion", "Ropenet", "Seat", "Slide", "Swing"],
+    "features": ["Obstacle", "Pavilion", "Ropenet", "Swing"],
     "featurePhotos": {
-      "Climber": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/ls0agbia.jpg",
-      "Fitness": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/bsjkznm8.jpg",
       "Obstacle": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/2025_04_0411_36_477888460422668883921.jpg",
-      "Others - Infoboard": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/xq0vzjba.jpg",
-      "Others - Shelter": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/zgp22rtm.jpg",
       "Pavilion": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/17437377749306577577915011421074.jpg",
       "Ropenet": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/2025_04_0411_37_244161459482309484959.jpg",
-      "Seat": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/gtoeap0a.jpg",
-      "Slide": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/unu0qcf9.jpg",
       "Swing": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/2025_04_0411_35_41225568322560768869.jpg"
     }
   },
@@ -4420,18 +4398,12 @@ const rawData = [
     "year": 2021,
     "lat": 1.3861,
     "lng": 103.9129,
-    "features": ["Climber", "Imagiplay", "Others - Telescope", "Pavilion", "Pole", "Ropenet", "Shade", "Slide", "Trampoline", "Tunnel"],
+    "features": ["Others - Telescope", "Shade", "Slide", "Trampoline"],
     "featurePhotos": {
-      "Climber": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/pg28nxsj.jpg",
-      "Imagiplay": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/4qcfjq9a.jpg",
       "Others - Telescope": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/2025_04_0412_08_581610039635261223620.jpg",
-      "Pavilion": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/uuynjxwt.jpg",
-      "Pole": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/mkx5t4pk.jpg",
-      "Ropenet": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/u0tm2unj.jpg",
       "Shade": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/2025_04_0412_03_268484790648718129643.jpg",
       "Slide": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/2025_04_0412_03_547011711350206675258.jpg",
-      "Trampoline": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/2025_04_0412_01_3492503426894148915.jpg",
-      "Tunnel": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/arc5syyw.jpg"
+      "Trampoline": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/2025_04_0412_01_3492503426894148915.jpg"
     }
   },
   {
@@ -4443,16 +4415,10 @@ const rawData = [
     "year": 2021,
     "lat": 1.3876,
     "lng": 103.9086,
-    "features": ["Climber", "Fitness", "Others - Hardcourt", "Others - Logging Track", "Pavilion", "Rocker", "Ropenet", "Seat", "Shade", "Slide", "Swing"],
+    "features": ["Others - Logging Track", "Pavilion", "Shade", "Slide", "Swing"],
     "featurePhotos": {
-      "Climber": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/fphqj7nz.jpg",
-      "Fitness": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/e0jscncz.jpg",
-      "Others - Hardcourt": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/eojtfdzx.jpg",
       "Others - Logging Track": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/2025_04_0411_24_575322775186481430138.jpg",
       "Pavilion": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/2025_04_0411_24_165747261478545007965.jpg",
-      "Rocker": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/2p1ccrpl.jpg",
-      "Ropenet": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/t3se3l2k.jpg",
-      "Seat": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/clooym9g.jpg",
       "Shade": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/2025_04_0411_21_428991858964772141690.jpg",
       "Slide": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/2025_04_0411_20_573714919305703648616.jpg",
       "Swing": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/2025_04_0411_20_216599968233894929786.jpg"
@@ -4827,13 +4793,11 @@ const rawData = [
     "year": 2021,
     "lat": 1.3838,
     "lng": 103.9027,
-    "features": ["Climber", "Learnwall", "Others - Footrock", "Pole", "Slide"],
+    "features": ["Climber", "Learnwall", "Others - Footrock"],
     "featurePhotos": {
       "Climber": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/2025_04_0410_26_054017023865824537417.jpg",
       "Learnwall": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/17437335265651644703639872481574.jpg",
-      "Others - Footrock": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/2025_04_0410_31_21276851170459490629.jpg",
-      "Pole": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/43y88ud1.jpg",
-      "Slide": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/wisg6as4.jpg"
+      "Others - Footrock": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/2025_04_0410_31_21276851170459490629.jpg"
     }
   },
   {
@@ -4949,15 +4913,10 @@ const rawData = [
     "year": 2021,
     "lat": 1.3888,
     "lng": 103.9067,
-    "features": ["Climber", "Imagiplay", "Learnwall", "Others - Shelter", "Pole", "Seat", "Slide"],
+    "features": ["Climber", "Imagiplay"],
     "featurePhotos": {
       "Climber": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/2025_04_0412_25_378165899960472691064.jpg",
-      "Imagiplay": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/2025_04_0412_24_205789598904543158182.jpg",
-      "Learnwall": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/1ohyofi7.jpg",
-      "Others - Shelter": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/mj7th9hb.jpg",
-      "Pole": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/flblcrzu.jpg",
-      "Seat": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/91uki19g.jpg",
-      "Slide": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/xy59ikok.jpg"
+      "Imagiplay": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/2025_04_0412_24_205789598904543158182.jpg"
     }
   },
   {
