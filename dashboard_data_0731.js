@@ -3364,7 +3364,7 @@ const rawData = [
       "Climber": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/2025_04_0411_16_567431494591237652232.jpg",
       "Imagiplay": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/2025_04_0411_14_04761599286316303124.jpg",
       "Learnwall": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/2025_04_0411_17_306099171560936101557.jpg",
-      "Obstacle": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/z39kfcoe.jpg",
+      "Obstacle": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/2025_04_0411_14_04761599286316303124.jpg",
       "Seat": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/2025_04_0411_17_598377880995021382545.jpg",
       "Slide": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Rivervale_Group 2/2025_04_0411_15_229200946848250137368.jpg"
     }
