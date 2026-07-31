@@ -18,7 +18,7 @@ const rawData = [
       "Pavilion": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Matilda_Group 1/17453874152888699866431129476385.jpg",
       "Ropenet": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Matilda_Group 1/IMG_4482.jpeg",
       "Seat": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Matilda_Group 1/17453872709904600939431213243852.jpg",
-      "Slide": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Matilda_Group 1/IMG_4481.jpg"
+      "Slide": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Matilda_Group 1/IMG_4481.jpeg"
     }
   },
   {
