@@ -886,6 +886,28 @@
         function getAgeGroupColor(ag) { return AGE_COLOR_MAP[(ag || '').toLowerCase()] || AGE_COLOR_MAP['no information']; }
         function normalizePhoto(url) { if (!url || url === "photos/F_Cleaning" || url.endsWith('/')) return NO_PHOTO_PLACEHOLDER; return url; }
 
+        function toAbsoluteUrl(url) {
+            try { return new URL(url, window.location.href).href; } catch (e) { return url; }
+        }
+
+        function getResizedPhotoUrl(url, width) {
+            if (!url || url.startsWith('data:')) return url;
+            const abs = toAbsoluteUrl(url);
+            if (!/^https?:\/\//i.test(abs)) return url;
+            return `https://wsrv.nl/?url=${encodeURIComponent(abs)}&w=${width}&q=75&output=webp`;
+        }
+
+
+        function setPhotoSrc(imgEl, url, width) {
+            const full = normalizePhoto(url);
+            imgEl.dataset.fullsrc = full;
+            if (full === NO_PHOTO_PLACEHOLDER) { imgEl.onerror = null; imgEl.src = full; return; }
+            imgEl.src = getResizedPhotoUrl(full, width);
+            imgEl.onerror = () => {
+                imgEl.onerror = () => { imgEl.onerror = null; imgEl.src = NO_PHOTO_PLACEHOLDER; };
+                imgEl.src = full;
+            };
+        }
 
         let pieChart, lineChart, barChart, map, markersGroup;
         let selectedAgeGroups = new Set();
@@ -1067,6 +1089,7 @@
                     else selectedFeatures.delete(feat);
                     updateFeatureDropdownLabel();
                     applyFilters();
+                    focusMapOnFilteredArea(getFilteredPlaygrounds());
                 });
             });
             document.getElementById('featureSelectAll').addEventListener('click', () => {
@@ -1074,12 +1097,14 @@
                 panel.querySelectorAll('input[type=checkbox]').forEach(cb => cb.checked = true);
                 updateFeatureDropdownLabel();
                 applyFilters();
+                focusMapOnFilteredArea(getFilteredPlaygrounds());
             });
             document.getElementById('featureClearAll').addEventListener('click', () => {
                 selectedFeatures = new Set();
                 panel.querySelectorAll('input[type=checkbox]').forEach(cb => cb.checked = false);
                 updateFeatureDropdownLabel();
                 applyFilters();
+                focusMapOnFilteredArea(getFilteredPlaygrounds());
             });
 
             document.getElementById('featureDropdownBtn').addEventListener('click', (e) => {
@@ -1195,14 +1220,17 @@
         }
 
         function getFilteredPlaygrounds() {
+            // Details panel (map) filtering: intentionally does NOT use selectedAgeGroups
+            // (the Summary panel's Age Group filter). Age filtering here is handled
+            // separately via detailsSelectedAgeGroups (the pills inside Details panel),
+            // so switching to Details never inherits the Summary panel's age selection.
             const townVal = document.getElementById('townSelect').value;
             const subzoneVal = document.getElementById('subzoneSelect').value;
             return Object.values(playgroundsById).filter(pg => {
                 const matchTown = (townVal === 'ALL' || pg.town === townVal);
                 const matchSubzone = (subzoneVal === 'ALL' || pg.subzone === subzoneVal);
-                const matchAge = selectedAgeGroups.has(pg.ageGroup);
                 const matchFeature = selectedFeatures.size === 0 || pg.features.some(f => selectedFeatures.has(f));
-                return matchTown && matchSubzone && matchAge && matchFeature;
+                return matchTown && matchSubzone && matchFeature;
             });
         }
 
@@ -1556,7 +1584,7 @@
             const thumbBox = document.getElementById('photoThumbs');
 
             if (pg.featurePhotoMap && pg.featurePhotoMap[feature] && activeFeatureFilter) {
-                mainImg.src = normalizePhoto(pg.featurePhotoMap[feature]);
+                setPhotoSrc(mainImg, pg.featurePhotoMap[feature], 700);
             }
 
             let matchedPhotoFeature = feature;
@@ -1594,13 +1622,13 @@
 
             if (photos.length === 0 || !photos[0].url) {
                 mainImg.src = NO_PHOTO_PLACEHOLDER;
+                mainImg.dataset.fullsrc = NO_PHOTO_PLACEHOLDER;
                 note.textContent = 'No photos available';
                 renderCurrentPhotoFeaturePill(pg, null);
                 return;
             }
 
-            mainImg.src = normalizePhoto(photos[0].url);
-            mainImg.onerror = () => { mainImg.onerror = null; mainImg.src = NO_PHOTO_PLACEHOLDER; };
+            setPhotoSrc(mainImg, photos[0].url, 700);
 
             renderCurrentPhotoFeaturePill(pg, photos[0].feature);
 
@@ -1610,13 +1638,14 @@
                 thumb.dataset.feature = p.feature || '';
 
                 const img = document.createElement('img');
-                img.src = normalizePhoto(p.url);
-                img.onerror = () => { img.onerror = null; img.src = NO_PHOTO_PLACEHOLDER; };
+                img.loading = 'lazy';
+                img.decoding = 'async';
+                setPhotoSrc(img, p.url, 120);
                 img.title = p.feature || '';
                 thumb.appendChild(img);
 
                 thumb.addEventListener('click', () => {
-                    mainImg.src = normalizePhoto(p.url);
+                    setPhotoSrc(mainImg, p.url, 700);
                     thumbBox.querySelectorAll('.photo-thumb').forEach(t => t.classList.remove('active'));
                     thumb.classList.add('active');
 
@@ -1641,6 +1670,7 @@
             document.getElementById('selected-age').innerText = '-';
             document.getElementById('selected-year').innerText = '-';
             document.getElementById('selected-photo').src = NO_PHOTO_PLACEHOLDER;
+            document.getElementById('selected-photo').dataset.fullsrc = NO_PHOTO_PLACEHOLDER;
             document.getElementById('photoThumbs').innerHTML = '';
             document.getElementById('photoCountNote').textContent = '';
             document.getElementById('selected-feature-list').innerHTML = '';
@@ -1650,9 +1680,12 @@
         }
 
         function openLightbox() {
-            const src = document.getElementById('selected-photo').src;
+            const mainImg = document.getElementById('selected-photo');
+            const src = mainImg.dataset.fullsrc || mainImg.src;
             if (!src || src.includes('data:image/svg+xml')) return;
-            document.getElementById('lightbox-img').src = src;
+            const lightboxImg = document.getElementById('lightbox-img');
+            lightboxImg.onerror = () => { lightboxImg.onerror = null; };
+            lightboxImg.src = src;
             document.getElementById('lightbox').style.display = 'flex';
         }
         function closeLightbox() { document.getElementById('lightbox').style.display = 'none'; }
