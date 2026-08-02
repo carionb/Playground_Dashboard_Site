@@ -4292,8 +4292,7 @@ const rawData = [
       "Learnwall": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Towncentre_Group 1/image_(34).jpg",
       "Obstacle": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Towncentre_Group 1/image_(39).jpg",
       "Pavilion": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Towncentre_Group 1/IMG_7316.jpeg",
-      "Seat": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Towncentre_Group 1/image_(139).jpg",
-      "Shade": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Towncentre_Group 1/image_(140).jpg",
+      "Seat": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Towncentre_Group 1/IMG_7317.jpeg",
       "Slide": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Towncentre_Group 1/image_(40).jpg",
       "Spinner": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Towncentre_Group 1/image_(41).jpg"
     }
