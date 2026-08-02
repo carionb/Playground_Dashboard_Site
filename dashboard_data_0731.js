@@ -5589,10 +5589,10 @@ const rawData = [
       "Learnwall": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Punggol_Northshore_Group 1/5b4d80b5_5972_4c7c_b124_5068f8b5791a.jpeg",
       "Pavilion": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Punggol_Northshore_Group 1/image_(25).jpg",
       "Pole": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Punggol_Northshore_Group 1/image_(26).jpg",
-      "Rocker": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Punggol_Northshore_Group 1/17473804014058558246108376458590.jpg",
+      "Rocker": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Punggol_Northshore_Group 1/image_(27).jpg",
       "Ropenet": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Punggol_Northshore_Group 1/image_(24).jpg",
       "Seat": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Punggol_Northshore_Group 1/17473794658823611426193763513034.jpg",
-      "Seesaw": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Punggol_Northshore_Group 1/17473764836423863170379110847790.jpg",
+      "Seesaw": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Punggol_Northshore_Group 1/17473804014058558246108376458590.jpg",
       "Slide": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Punggol_Northshore_Group 1/17473804985384111489247590624690.jpg",
       "Spinner": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Punggol_Northshore_Group 1/17473804481572848539275145255325.jpg",
       "Swing": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Punggol_Northshore_Group 1/17473805765276145257290806518083.jpg"
