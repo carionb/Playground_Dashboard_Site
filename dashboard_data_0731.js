@@ -4288,8 +4288,8 @@ const rawData = [
     "features": ["Climber", "Fitness", "Learnwall", "Obstacle", "Pavilion", "Seat", "Slide", "Spinner"],
     "featurePhotos": {
       "Climber": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Towncentre_Group 1/image_(39).jpg",
-      "Fitness": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Towncentre_Group 1/image_(36).jpg",
-      "Learnwall": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Towncentre_Group 1/image_(35).jpg",
+      "Fitness": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Towncentre_Group 1/image_(35).jpg",
+      "Learnwall": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Towncentre_Group 1/image_(34).jpg",
       "Obstacle": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Towncentre_Group 1/IMG_7317.jpeg",
       "Pavilion": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Towncentre_Group 1/image_(38).jpg",
       "Seat": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Towncentre_Group 1/image_(40).jpg",
@@ -4648,13 +4648,12 @@ const rawData = [
     "year": 2021,
     "lat": 1.4129,
     "lng": 103.8976,
-    "features": ["Fitness", "Ropenet", "Seat", "Slide", "Swing"],
+    "features": ["Fitness", "Ropenet", "Slide", "Swing"],
     "featurePhotos": {
       "Fitness": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Punggol_Punggol Town Centre_Group 2/2025_04_2310_25_152862887111699943035.jpg",
       "Ropenet": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Punggol_Punggol Town Centre_Group 2/2025_04_2310_24_532618448161351693597.jpg",
-      "Seat": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Punggol_Punggol Town Centre_Group 2/17453752879166825574847695695194.jpg",
-      "Slide": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Punggol_Punggol Town Centre_Group 2/17453752357808111903807792014615.jpg",
-      "Swing": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Punggol_Punggol Town Centre_Group 2/17453752655953892832380121366953.jpg"
+      "Slide": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Punggol_Punggol Town Centre_Group 2/17453752655953892832380121366953.jpg",
+      "Swing": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Punggol_Punggol Town Centre_Group 2/17453752879166825574847695695194.jpg"
     }
   },
   {
