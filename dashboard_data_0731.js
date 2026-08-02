@@ -4287,14 +4287,15 @@ const rawData = [
     "lng": 103.8984,
     "features": ["Climber", "Fitness", "Learnwall", "Obstacle", "Pavilion", "Seat", "Slide", "Spinner"],
     "featurePhotos": {
-      "Climber": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Towncentre_Group 1/image_(39).jpg",
+      "Climber": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Towncentre_Group 1/image_(38).jpg",
       "Fitness": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Towncentre_Group 1/image_(35).jpg",
       "Learnwall": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Towncentre_Group 1/image_(34).jpg",
-      "Obstacle": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Towncentre_Group 1/IMG_7317.jpeg",
-      "Pavilion": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Towncentre_Group 1/image_(38).jpg",
-      "Seat": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Towncentre_Group 1/image_(40).jpg",
-      "Slide": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Towncentre_Group 1/image_(41).jpg",
-      "Spinner": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Towncentre_Group 1/image_(42).jpg"
+      "Obstacle": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Towncentre_Group 1/image_(39).jpg",
+      "Pavilion": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Towncentre_Group 1/IMG_7316.jpeg",
+      "Seat": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Towncentre_Group 1/image_(139).jpg",
+      "Shade": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Towncentre_Group 1/image_(140).jpg",
+      "Slide": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Towncentre_Group 1/image_(40).jpg",
+      "Spinner": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Towncentre_Group 1/image_(41).jpg"
     }
   },
   {
