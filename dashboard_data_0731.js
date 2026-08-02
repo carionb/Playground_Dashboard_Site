@@ -5443,11 +5443,11 @@ const rawData = [
     "lng": 103.9027,
     "features": ["Learnwall", "Obstacle", "Rocker", "Seat", "Slide"],
     "featurePhotos": {
-      "Learnwall": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Punggol_Northshore_Group 1/17473791446398962684130894777103.jpg",
-      "Obstacle": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Punggol_Northshore_Group 1/1747379225917186000450724955700.jpg",
-      "Rocker": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Punggol_Northshore_Group 1/17473791328738179247865831950433.jpg",
-      "Seat": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Punggol_Northshore_Group 1/17473793676918722734971892754087.jpg",
-      "Slide": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Punggol_Northshore_Group 1/image_(32).jpg"
+      "Learnwall": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Punggol_Northshore_Group 1/17473791814337659356496162733663.jpg",
+      "Obstacle": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Punggol_Northshore_Group 1/17473792383264237200040717804133.jpg",
+      "Rocker": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Punggol_Northshore_Group 1/image_(32).jpg",
+      "Seat": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Punggol_Northshore_Group 1/17473793959762040645224529815862.jpg",
+      "Slide": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Punggol_Northshore_Group 1/17473791446398962684130894777103.jpg"
     }
   },
   {
@@ -5459,16 +5459,15 @@ const rawData = [
     "year": 2021,
     "lat": 1.4172,
     "lng": 103.9027,
-    "features": ["Fitness", "Seat", "Others - Footrock", "Obstacle", "Overhead", "Rooftop", "Slide", "Swing"],
+    "features": ["Fitness", "Others - Footrock", "Obstacle", "Overhead", "Rooftop", "Slide", "Swing"],
     "featurePhotos": {
-      "Fitness": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Punggol_Northshore_Group 1/image_(30).jpg",
-      "Seat": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Punggol_Northshore_Group 1/17473793959762040645224529815862.jpg",
-      "Others - Footrock": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Punggol_Northshore_Group 1/17473792836745497087064851979000.jpg",
+      "Fitness": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Punggol_Northshore_Group 1/17473793025544011003789422228796.jpg",
+      "Others - Footrock": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Punggol_Northshore_Group 1/image_(29).jpg",
       "Obstacle": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Punggol_Northshore_Group 1/17473794426374470403775768283174.jpg",
-      "Overhead": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Punggol_Northshore_Group 1/17473792383264237200040717804133.jpg",
-      "Rooftop": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Punggol_Northshore_Group 1/image_(31).jpg",
-      "Slide": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Punggol_Northshore_Group 1/17473793025544011003789422228796.jpg",
-      "Swing": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Punggol_Northshore_Group 1/17473791814337659356496162733663.jpg"
+      "Overhead": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Punggol_Northshore_Group 1/image_(31).jpg",
+      "Rooftop": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Punggol_Northshore_Group 1/image_(30).jpg",
+      "Slide": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Punggol_Northshore_Group 1/17473792836745497087064851979000.jpg",
+      "Swing": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Punggol_Northshore_Group 1/1747379225917186000450724955700.jpg"
     }
   },
   {
