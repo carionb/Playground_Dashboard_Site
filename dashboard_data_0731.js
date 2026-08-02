@@ -4719,7 +4719,7 @@ const rawData = [
       "Ropenet": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Punggol_Punggol Field/image_(118).jpg",
       "Seat": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Punggol_Punggol Field/17465968814452447286382431131766.jpg",
       "Shade": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Punggol_Punggol Field/image_(122).jpg",
-      "Slide": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Punggol_Punggol Field/image_(125).jpg",
+      "Slide": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Punggol_Punggol Field/image_(123).jpg",
       "Swing": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Punggol_Punggol Field/image_(124).jpg"
     }
   },
@@ -4836,7 +4836,7 @@ const rawData = [
     "featurePhotos": {
       "Climber": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Punggol_Punggol Field/1000034565.jpg",
       "Learnwall": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Punggol_Punggol Field/1000034564.jpg",
-      "Pavilion": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Punggol_Punggol Field/IMG_9589.jpeg",
+      "Pavilion": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Punggol_Punggol Field/IMG_9589.jpg",
       "Seat": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Punggol_Punggol Field/image_(39).jpg",
       "Shade": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Punggol_Punggol Field/image_(40).jpg",
       "Slide": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Punggol_Punggol Field/image_(42).jpg"
@@ -4855,8 +4855,8 @@ const rawData = [
     "featurePhotos": {
       "Climber": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Punggol_Punggol Field/af66ab11_7bf7_42e2_a917_b9387b529b5a.jpeg",
       "Learnwall": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Punggol_Punggol Field/36f75a1f_baf1_4078_a206_47e1042e4eff.jpeg",
-      "Pavilion": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Punggol_Punggol Field/IMG_9592.jpeg",
-      "Ropenet": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Punggol_Punggol Field/IMG_9591.jpeg",
+      "Pavilion": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Punggol_Punggol Field/IMG_9592.jpg",
+      "Ropenet": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Punggol_Punggol Field/IMG_9591.jpg",
       "Seat": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Punggol_Punggol Field/image_(37).jpg",
       "Shade": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Punggol_Punggol Field/image_(36).jpg",
       "Slide": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Punggol_Punggol Field/image_(38).jpg"
@@ -4934,7 +4934,7 @@ const rawData = [
       "Learnwall": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Punggol_Punggol Field/6276c2a5_d8b3_4ac6_b113_441c8418407d.jpeg",
       "Obstacle": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Punggol_Punggol Field/image_(10).jpg",
       "Others - Hardcourt": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Punggol_Punggol Field/image_(7).jpg",
-      "Others - Rain Garden": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Punggol_Punggol Field/17504070772733724248749195737881.jpeg",
+      "Others - Rain Garden": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Punggol_Punggol Field/17504070772733724248749195737881.jpg",
       "Pavilion": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Punggol_Punggol Field/image_(8).jpg",
       "Rocker": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Punggol_Punggol Field/image_(9).jpg",
       "Seat": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Punggol_Punggol Field/17504070254065469048008918591582.jpg",
