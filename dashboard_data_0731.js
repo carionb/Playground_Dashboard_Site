@@ -298,16 +298,13 @@ const rawData = [
     "year": 2021,
     "lat": 1.3875,
     "lng": 103.8969,
-    "features": ["Climber", "Imagiplay", "Learnwall", "Others - Sensory", "Pole", "Seat", "Shade", "Slide", "Spinner"],
+    "features": ["Climber", "Imagiplay", "Learnwall", "Others - Sensory", "Pole", "Spinner"],
     "featurePhotos": {
       "Climber": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Anchorvale_Group 2/2025_04_1710_39_39636038802335336375.jpg",
       "Imagiplay": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Anchorvale_Group 2/17448576627981795465955723242456.jpg",
       "Learnwall": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Anchorvale_Group 2/2025_04_1710_42_043457260244806475734.jpg",
       "Others - Sensory": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Anchorvale_Group 2/2025_04_1710_43_076230787259987764656.jpg",
       "Pole": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Anchorvale_Group 2/2025_04_1710_42_382419550966330574988.jpg",
-      "Seat": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Anchorvale_Group 2/17443552310491497249043169124795.jpg",
-      "Shade": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Anchorvale_Group 2/17443552945181814561390442712743.jpg",
-      "Slide": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Anchorvale_Group 2/17443553369908231183284407957743.jpg",
       "Spinner": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Anchorvale_Group 2/2025_04_1710_44_456573669681961852124.jpg"
     }
   },
