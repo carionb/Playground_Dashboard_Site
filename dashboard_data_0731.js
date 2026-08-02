@@ -2529,8 +2529,8 @@ const rawData = [
       "Fitness": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Fernvale/c1760911_6dff_4a51_92b8_680a5c0ab520.jpeg",
       "Imagiplay": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Fernvale/ed2b056b_64c8_4eea_9aef_4ab8b25db3b5.jpeg",
       "Obstacle": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Fernvale/181a5b51_5136_4b11_b242_e5e437fa968f.jpeg",
-      "Rocker": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Fernvale/IMG_9566.jpeg",
-      "Ropenet": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Fernvale/IMG_9565.jpeg",
+      "Rocker": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Fernvale/IMG_9566.jpg",
+      "Ropenet": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Fernvale/IMG_9565.jpg",
       "Shade": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Fernvale/image_(195).jpg",
       "Swing": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Fernvale/image_(194).jpg"
     }
@@ -2547,8 +2547,8 @@ const rawData = [
     "features": ["Climber", "Pavilion", "Ropenet", "Seat", "Slide", "Spinner", "Swing", "Trampoline"],
     "featurePhotos": {
       "Climber": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Fernvale/2f8643be_2191_44b1_b1b8_406ac70b529a.jpeg",
-      "Pavilion": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Fernvale/IMG_9569.jpeg",
-      "Ropenet": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Fernvale/IMG_9568.jpeg",
+      "Pavilion": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Fernvale/IMG_9569.jpg",
+      "Ropenet": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Fernvale/IMG_9568.jpg",
       "Seat": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Fernvale/image_(189).jpg",
       "Slide": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Fernvale/image_(191).jpg",
       "Spinner": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Fernvale/image_(193).jpg",
@@ -2571,7 +2571,7 @@ const rawData = [
       "Fitness": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Fernvale/95a367a5_6ed3_479a_a0b2_11372b9b4cd3.jpeg",
       "Learnwall": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Fernvale/fbb1fec8_17f9_4bb0_94b1_8aee10b06094.jpeg",
       "Others - Sensory": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Fernvale/image_(183).jpg",
-      "Pavilion": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Fernvale/IMG_9572.jpeg",
+      "Pavilion": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Fernvale/IMG_9572.jpg",
       "Seat": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Fernvale/image_(186).jpg",
       "Shade": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Fernvale/image_(184).jpg",
       "Slide": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Fernvale/image_(185).jpg",
@@ -2593,8 +2593,8 @@ const rawData = [
       "Climber": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Fernvale/e088f7b2_45a7_49cd_957b_b2683db71fbf.jpeg",
       "Fitness": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Fernvale/430cae38_b1ee_423b_9c2f_b2db10bd07b7.jpeg",
       "Pavilion": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Fernvale/AB0343E2_B4E0_48D2_9E3E_8F104C15B31A.jpg",
-      "Pole": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Fernvale/IMG_9574.jpeg",
-      "Ropenet": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Fernvale/IMG_9573.jpeg",
+      "Pole": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Fernvale/IMG_9574.jpg",
+      "Ropenet": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Fernvale/IMG_9573.jpg",
       "Seat": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Fernvale/image_(181).jpg",
       "Slide": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Fernvale/image_(182).jpg"
     }
@@ -2630,8 +2630,8 @@ const rawData = [
     "featurePhotos": {
       "Climber": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Fernvale/1000034520.jpg",
       "Learnwall": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Fernvale/1000034521.jpg",
-      "Overhead": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Fernvale/IMG_9581.jpeg",
-      "Ropenet": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Fernvale/IMG_9580.jpeg",
+      "Overhead": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Fernvale/IMG_9581.jpg",
+      "Ropenet": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Fernvale/IMG_9580.jpg",
       "Seat": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Fernvale/image_(169).jpg",
       "Shade": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Fernvale/image_(168).jpg",
       "Slide": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Fernvale/image_(170).jpg",
@@ -3099,7 +3099,7 @@ const rawData = [
       "Imagiplay": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Fernvale/757eb98e_59a8_4000_ad13_0276c196f186.jpeg",
       "Learnwall": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Fernvale/1e8486ef_373b_4d4c_a7bf_10d3e4e2a83a.jpeg",
       "Obstacle": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Fernvale/8dff567f_42df_4ed9_9915_e34a5e6647e1.jpeg",
-      "Pavilion": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Fernvale/IMG_9575.jpeg",
+      "Pavilion": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Fernvale/IMG_9575.jpg",
       "Seat": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Fernvale/image_(180).jpg",
       "Shade": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Fernvale/image_(175).jpg",
       "Slide": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Fernvale/image_(179).jpg",
@@ -3120,7 +3120,7 @@ const rawData = [
       "Climber": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Fernvale/b6b55e44_12f1_4ee6_83b1_25a7a8e205c5.jpeg",
       "Learnwall": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Fernvale/b01197e9_723a_4b61_9525_cfdb36d49dfb.jpeg",
       "Others - Hardcourt": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Fernvale/image_(174).jpg",
-      "Pavilion": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Fernvale/IMG_9577.jpeg",
+      "Pavilion": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Fernvale/IMG_9577.jpg",
       "Seat": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Fernvale/image_(173).jpg",
       "Shade": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Fernvale/image_(171).jpg",
       "Slide": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Fernvale/image_(172).jpg"
@@ -5719,12 +5719,12 @@ const rawData = [
     "year": 2021,
     "lat": 1.3948,
     "lng": 103.8706,
-    "features": ["Learnwall", "Others - Balance", "Seat", "Swing"],
+    "features": ["Learnwall", "Others - Balance", "Seat", "Slide"],
     "featurePhotos": {
       "Learnwall": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Fernvale/image_(44).jpg",
       "Others - Balance": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Fernvale/image_(42).jpg",
       "Seat": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Fernvale/image_(40).jpg",
-      "Swing": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Fernvale/image_(45).jpg"
+      "Slide": "https://cdn.jsdelivr.net/gh/carionb/Playground-Dashboard@main/photos/Sengkang_Fernvale/image_(45).jpg"
     }
   },
   {
