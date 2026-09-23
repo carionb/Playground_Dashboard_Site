@@ -10,6 +10,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.css" />
+    <script src="https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.js"></script>
+    <script src="https://unpkg.com/@maplibre/maplibre-gl-leaflet@0.0.20/leaflet-maplibre-gl.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
     <script src="subzonesMap.js"></script>
     <script src="dashboard_data_0731.js"></script>
@@ -1142,20 +1145,24 @@
         function initMap() {
             map = L.map('map', {
                 zoomControl: false,
-                preferCanvas: true
+                preferCanvas: true,
+                minZoom: 1,
+                maxZoom: 19,
+                maxBounds: [
+                    [-85, -180],
+                    [85, 180]
+                ],
+                maxBoundsViscosity: 1
             }).setView([1.398, 103.898], 13);
-            L.control.zoom({
-                position: 'topright'
+            L.control
+                .zoom({
+                    position: 'topright'
+                })
+                .addTo(map);
+            L.maplibreGL({
+                style: 'https://tiles.openfreemap.org/styles/positron',
+                attribution: '&copy; OpenStreetMap contributors, &copy; OpenFreeMap'
             }).addTo(map);
-            L.tileLayer(
-                'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}',
-                {
-                    minZoom: 0,
-                    maxZoom: 19,
-                    attribution:
-                        'Tiles &copy; Esri, HERE, Garmin, OpenStreetMap contributors, and the GIS user community'
-                }
-            ).addTo(map);
             markersGroup = L.layerGroup().addTo(map);
             updateMapLegend();
             map.on('moveend', updateDetailsAreaAges);
