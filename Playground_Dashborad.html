@@ -549,6 +549,10 @@
             border-radius: var(--radius-sm);
         }
 
+        #map .maplibregl-canvas {
+            filter: brightness(1.4) saturate(0.6) contrast(0.9);
+        }
+
         .map-legend {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(4px);
@@ -1159,10 +1163,22 @@
                     position: 'topright'
                 })
                 .addTo(map);
-            L.maplibreGL({
+            const glLayer = L.maplibreGL({
                 style: 'https://tiles.openfreemap.org/styles/positron',
                 attribution: '&copy; OpenStreetMap contributors, &copy; OpenFreeMap'
             }).addTo(map);
+            glLayer.getMaplibreMap().on('load', function () {
+                const mlMap = glLayer.getMaplibreMap();
+                mlMap.getStyle().layers.forEach(function (layer) {
+                    const isSymbol = layer.type === 'symbol';
+                    const textField = layer.layout && layer.layout['text-field'];
+                    const looksLikeRoadLabel = /road|highway|motorway|trunk|primary|secondary/i.test(layer.id)
+                        || (typeof textField === 'string' && /ref|name/i.test(textField));
+                    if (/label|place|poi|boundary|transit/i.test(layer.id) || (isSymbol && looksLikeRoadLabel)) {
+                        mlMap.setLayoutProperty(layer.id, 'visibility', 'none');
+                    }
+                });
+            });
             markersGroup = L.layerGroup().addTo(map);
             updateMapLegend();
             map.on('moveend', updateDetailsAreaAges);
