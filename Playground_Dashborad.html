@@ -549,10 +549,6 @@
             border-radius: var(--radius-sm);
         }
 
-        #map .maplibregl-canvas {
-            filter: brightness(1.4) saturate(0.6) contrast(0.9);
-        }
-
         .map-legend {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(4px);
@@ -1174,7 +1170,7 @@
                     const textField = layer.layout && layer.layout['text-field'];
                     const looksLikeRoadLabel = /road|highway|motorway|trunk|primary|secondary/i.test(layer.id)
                         || (typeof textField === 'string' && /ref|name/i.test(textField));
-                    if (/label|place|poi|boundary|transit/i.test(layer.id) || (isSymbol && looksLikeRoadLabel)) {
+                    if (/poi|boundary|transit/i.test(layer.id) || (isSymbol && looksLikeRoadLabel)) {
                         mlMap.setLayoutProperty(layer.id, 'visibility', 'none');
                     }
                 });
