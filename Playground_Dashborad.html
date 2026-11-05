@@ -15,7 +15,7 @@
     <script src="https://unpkg.com/@maplibre/maplibre-gl-leaflet@0.0.20/leaflet-maplibre-gl.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
     <script src="subzonesMap.js"></script>
-    <script src="dashboard_data_0731.js"></script>
+    <script src="dashboard_data_0731_raw_urls.js"></script>
     <style>
         :root {
             --bg-main: #f8fafc;
@@ -1159,6 +1159,7 @@
                     position: 'topright'
                 })
                 .addTo(map);
+
             const glLayer = L.maplibreGL({
                 style: 'https://tiles.openfreemap.org/styles/positron',
                 attribution: '&copy; OpenStreetMap contributors, &copy; OpenFreeMap'
